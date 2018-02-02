@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Javascript Tetris</title>
+    <style>
+    </style>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div id="tetris">
+
+      <div class="container h-100">
+        <div id="menu">
+          <h1> Digital Carreer Institute Tetris challenge</h1>
+          <p id="start"><a href="javascript:play();">Press Space to Play.</a></p>
+          <p><canvas id="upcoming"></canvas></p>
+          <p>score <span id="score">00000</span></p>
+          <p>rows <span id="rows">0</span></p>
+        </div>
+        <div class="gameboard bg-primary">
+          <div class="row">
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+            <div class="col"> </div>
+          </div>
+          <canvas id="canvas">
+            Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
+          </canvas>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script src="stats.js"></script>
+    <script src="tetris.js"></script>
+
+  </body>
+</html>
