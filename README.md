@@ -1,28 +1,11 @@
-Javascript Tetris
+Dci Tetris
 =================
 
-An HTML5 Tetris Game
+#### An HTML5 Tetris Game
 
- * [play the game](http://codeincomplete.com/projects/tetris/)
- * read a [blog article](http://codeincomplete.com/posts/2011/10/10/javascript_tetris/)
- * view the [source](https://github.com/jakesgordon/javascript-tetris)
+To play it locally by opening the `index.html` in a browser your choice or you
+[play the game online](https://devugees.github.io/dci-tetris/).
 
->> _*SUPPORTED BROWSERS*: Chrome, Firefox, Safari, Opera and IE9+_
+Credits [Thomas Kuhnert](https://github.com/spielhoelle) - [DCI](https://digitalcareerinstitute.org/)
 
-FUTURE
-======
-
- * menu
- * animation and fx
- * levels
- * high scores
- * touch support
- * music and sound fx
-
-
-License
-=======
-
-[MIT](http://en.wikipedia.org/wiki/MIT_License) license.
-
-
+![screenshot](./screenshot.png)
