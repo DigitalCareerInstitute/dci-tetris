@@ -39,7 +39,10 @@ h1 {
   vertical-align: top;
 }
 .gameboard {
-  padding: 200px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding: 0 300px;
   clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
 
@@ -47,13 +50,14 @@ h1 {
   /*padding: 400px !important;*/
   display: inline-block;
   vertical-align: top;
-  background: url(logo.png);
+  /*background: url(logo.png);*/
   background-color: white;
   background-size: cover;
   background-position: top;
 }
 
 #menu {
+  text-align: left;
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -66,7 +70,8 @@ h1 {
 
 #menu p a {
   text-decoration: none;
-  color: white;
+  animation: pulse 0.4s infinite;
+  color: #333;
 }
 
 #upcoming {
@@ -91,7 +96,17 @@ h1 {
   bottom: 0em;
   right: 1em;
 }
-
+@keyframes pulse {
+  0% {
+    color: #000;
+  }
+  49% {
+    color: #000;
+  }
+  50% {
+    color: #fff;
+  }
+}
 @media screen and (min-width : 0px) and (min-height : 0px) {
   #tetris {
     font-size: 0.75em;
