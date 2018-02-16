@@ -27,8 +27,7 @@ if (!window.requestAnimationFrame) { // http://paulirish.com/2011/requestanimati
 
 var KEY     = { ESC: 27, SPACE: 32, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40 },
   DIR     = { UP: 0, RIGHT: 1, DOWN: 2, LEFT: 3, MIN: 0, MAX: 3 },
-  stats   = new Stats(),
-  canvas  = get('canvas'),
+  stats   = new Stats(), canvas  = get('canvas'),
   ctx     = canvas.getContext('2d'),
   ucanvas = get('upcoming'),
   uctx    = ucanvas.getContext('2d'),
@@ -219,8 +218,36 @@ function reset() {
   setNextPiece();
 }
 
+var scores = [{title: "selo.jpg", score: 100 }, {title: "share.jpg", score: 500 }, {title: "einhorn.jpg", score: 800 }]
+scores.forEach((highscores) => {
+  var template = document.getElementById('template')
+  var prices = document.getElementById('prices')
+  clone = template.cloneNode(true);
+  clone.removeAttribute("id")
+  clone.classList.remove("d-none")
+  clone.id=`score${ highscores.score }`
+  clone.style.width = 100 / scores.length+"%"
+  clone.querySelector("img").src = `img/${ highscores.title }`
+  clone.querySelector("h6").innerHTML = `${ highscores.title.replace(".jpg", "") }`
+  clone.querySelector(".score").innerHTML = highscores.score
+  prices.appendChild(clone)
+})
+
 function update(idt) {
   if (playing) {
+    //scores.forEach((highscores) => {
+      //if ( vscore > highscores.score )
+        //console.log( document.getElementById(`score${highscores.score}`) )
+        //document.getElementById(`score${highscores.score}`).classList.add('active')
+      ////console.log(highscores.score)
+    //})
+
+    if (vscore > 100)
+      document.getElementById('score100').classList.add('active')
+    if (vscore > 300)
+      document.getElementById('score500').classList.add('active')
+    if (vscore > 800)
+      document.getElementById('score800').classList.add('active')
     if (vscore < score)
       setVisualScore(vscore + 1);
     handle(actions.shift());

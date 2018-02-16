@@ -6,6 +6,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   </head>
 
   <body>
@@ -20,6 +21,8 @@
           <p><canvas id="upcoming"></canvas></p>
           <p>score <span id="score">00000</span></p>
           <p>rows <span id="rows">0</span></p>
+          <h2>prices:</h2>
+          <div id="prices" class="d-flex"> </div>
         </div>
         <div class="gameboard bg-primary">
           <div class="row">
@@ -37,9 +40,16 @@
           <canvas id="canvas">
             Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
           </canvas>
+
         </div>
       </div>
     </div>
+    </div>
+
+    <div id="template" class="d-none price grayscale">
+      <h6></h6>
+      <img src="./img/share.jpg" class="price w-100 " id="price1" alt="logo"/>
+      <span class="score"></span>
     </div>
 
     <script src="stats.js"></script>
