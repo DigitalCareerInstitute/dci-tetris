@@ -24,8 +24,7 @@ if (!window.requestAnimationFrame) { // http://paulirish.com/2011/requestanimati
 //-------------------------------------------------------------------------
 // game constants
 //-------------------------------------------------------------------------
-
-var KEY     = { ESC: 27, SPACE: 32, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40 },
+var KEY     = { ESC: 27, SPACE: 13, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40 },
   DIR     = { UP: 0, RIGHT: 1, DOWN: 2, LEFT: 3, MIN: 0, MAX: 3 },
   stats   = new Stats(), canvas  = get('canvas'),
   ctx     = canvas.getContext('2d'),
@@ -130,7 +129,7 @@ function run() {
 
   showStats(); // initialize FPS counter
   addEvents(); // attach keydown and resize events
-
+  setHighScore(); 
   var last = now = timestamp();
   function frame() {
     now = timestamp();
@@ -180,7 +179,11 @@ function keydown(ev) {
     }
   }
   else if (ev.keyCode == KEY.SPACE) {
-    play();
+    var name = document.getElementById('name').value
+    if(document.getElementById('name').value !== "")
+      play();
+    else
+      alert("enter your name to start!")
     handled = true;
   }
   if (handled)
@@ -191,10 +194,45 @@ function keydown(ev) {
 // GAME LOGIC
 //-------------------------------------------------------------------------
 
-function play() { hide('start'); reset();          playing = true;  }
-function lose() { show('start'); setVisualScore(); playing = false; }
+function play() { hide('start'); reset();         playing = true;  }
+  
 
-function setVisualScore(n)      { vscore = n || score; invalidateScore(); }
+function lose() {
+  var highscores = JSON.parse( localStorage.getItem('highscores') ).sort(function(a,b){return parseInt(b)-parseInt(a)}) || [];
+  if (score > highscores[0].score){
+    console.log("unshiftet"); highscores.unshift({name: document.getElementById('name').value, score:  score });
+  } else {
+    var found = false;
+    highscores.forEach((player, index, array) => {
+      if (!found && player.score < score) {
+        highscores.splice(index, 0, {name: document.getElementById('name').value, score:  score });
+        found = true;
+      }
+    })
+  }
+  console.log(highscores)
+  show('start');
+  localStorage.setItem('highscores', JSON.stringify( highscores ));
+  setVisualScore();
+  playing = false;
+  setHighScore();
+}
+
+function setHighScore(n) {
+  var highscores = JSON.parse( localStorage.getItem('highscores') ).sort(function(a,b){return parseInt(b)-parseInt(a)}) || [];
+  var scorecontainer = document.createElement('ul')
+  highscores.map((score)=> { 
+    var li = document.createElement('li')
+    li.innerHTML = `${ score.name } | ${score.score} `
+    scorecontainer.appendChild(li)
+  })
+  document.getElementById('highscores').innerHTML = scorecontainer.innerHTML;
+}
+
+function setVisualScore(n) {
+  vscore = n || score;
+  invalidateScore();
+}
 function setScore(n)            { score = n; setVisualScore(n);  }
 function addScore(n)            { score = score + n;   }
 function clearScore()           { setScore(0); }
@@ -236,10 +274,10 @@ scores.forEach((highscores) => {
 function update(idt) {
   if (playing) {
     //scores.forEach((highscores) => {
-      //if ( vscore > highscores.score )
-        //console.log( document.getElementById(`score${highscores.score}`) )
-        //document.getElementById(`score${highscores.score}`).classList.add('active')
-      ////console.log(highscores.score)
+    //if ( vscore > highscores.score )
+    //console.log( document.getElementById(`score${highscores.score}`) )
+    //document.getElementById(`score${highscores.score}`).classList.add('active')
+    ////console.log(highscores.score)
     //})
 
     if (vscore > 100)

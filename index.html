@@ -17,7 +17,8 @@
         <div id="menu">
           <img src="fulllogo.png" width="200" alt="logo"/>
           <h1> Tetris challenge</h1>
-          <p id="start"><a href="javascript:play();">Press Space to Play.</a></p>
+          Enter your name : <input id="name"/>
+          <p id="start"><a href="javascript:play();">Press Enter to Play.</a></p>
           <p><canvas id="upcoming"></canvas></p>
           <p>score <span id="score">00000</span></p>
           <p>rows <span id="rows">0</span></p>
@@ -40,8 +41,13 @@
           <canvas id="canvas">
             Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
           </canvas>
+        </div>
+        <div>
+          <h2>Highscores</h2>
+          <div id="highscores"></div>
 
         </div>
+
       </div>
     </div>
     </div>
