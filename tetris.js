@@ -198,9 +198,12 @@ function play() { hide('start'); reset();         playing = true;  }
   
 
 function lose() {
-  var highscores = JSON.parse( localStorage.getItem('highscores') ).sort(function(a,b){return parseInt(b)-parseInt(a)}) || [];
-  if (score > highscores[0].score){
-    console.log("unshiftet"); highscores.unshift({name: document.getElementById('name').value, score:  score });
+  var highscores = JSON.parse( localStorage.getItem('highscores') ) || [];
+  highscores.sort(function(a,b){return parseInt(b)-parseInt(a)})
+  if (!highscores.length){
+    highscores.unshift({name: document.getElementById('name').value, score:  score });
+  } else if (score > highscores[0].score){
+    highscores.unshift({name: document.getElementById('name').value, score:  score });
   } else {
     var found = false;
     highscores.forEach((player, index, array) => {
@@ -219,7 +222,8 @@ function lose() {
 }
 
 function setHighScore(n) {
-  var highscores = JSON.parse( localStorage.getItem('highscores') ).sort(function(a,b){return parseInt(b)-parseInt(a)}) || [];
+  var highscores = JSON.parse( localStorage.getItem('highscores') ) || [];
+  highscores.sort(function(a,b){return parseInt(b)-parseInt(a)})
   var scorecontainer = document.createElement('ul')
   highscores.map((score)=> { 
     var li = document.createElement('li')
