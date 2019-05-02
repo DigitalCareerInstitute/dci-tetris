@@ -71,7 +71,9 @@ h1, h2, h3 {
   display: none !important;
 }
 #prices {
-  padding: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
   background: white;
 }
 .price {
