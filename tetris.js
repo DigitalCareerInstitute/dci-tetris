@@ -277,21 +277,11 @@ scores.forEach((highscores) => {
 
 function update(idt) {
   if (playing) {
-    //scores.forEach((highscores) => {
-    //if ( vscore > highscores.score )
-    //console.log( document.getElementById(`score${highscores.score}`) )
-    //document.getElementById(`score${highscores.score}`).classList.add('active')
-    ////console.log(highscores.score)
-    //})
-
-    if (vscore > 1000)
-      document.getElementById('score1000').classList.add('active')
-    if (vscore > 1500)
-      document.getElementById('score1500').classList.add('active')
-    if (vscore > 2000)
-      document.getElementById('score2000').classList.add('active')
-    if (vscore > 3000)
-      document.getElementById('score3000').classList.add('active')
+    scores.forEach(item => {
+      if(vscore > item.score){
+        document.getElementById(`score${item.score}`).classList.add('active')
+      }
+    })
     if (vscore < score)
       setVisualScore(vscore + 1);
     handle(actions.shift());
