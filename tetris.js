@@ -260,7 +260,7 @@ function reset() {
   setNextPiece();
 }
 
-var scores = [ {title: "1stprice.jpg", score: 2000 }, {title: "2ndprice.jpg", score: 5000 }, {title: "3rdprice.jpg", score: 8000 }]
+var scores = [ {title: "1stprice.jpg", score: 500 }, {title: "2ndprice.jpg", score: 5000 }, {title: "3rdprice.jpg", score: 8000 }]
 scores.forEach((highscores) => {
   var template = document.getElementById('template')
   var prices = document.getElementById('prices')
